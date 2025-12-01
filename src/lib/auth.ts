@@ -13,10 +13,12 @@ export const auth = betterAuth({
   emailAndPassword: {
     enabled: true,
   },
-  trustedOrigins: ["ebook-app://"],
+  trustedOrigins: process.env.TRUSTED_ORIGINS
+    ? process.env.TRUSTED_ORIGINS.split(",")
+    : [],
   debug: true,
   allowDangerousConnections: process.env.NODE_ENV !== "production",
   advanced: {
-    disableOriginCheck: true,
+    disableOriginCheck: process.env.NODE_ENV !== "production",
   },
 });
