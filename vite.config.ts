@@ -9,5 +9,13 @@ export default defineConfig(({ mode }) => {
     server: {
       port: 3001,
     },
+    plugins: [
+      build({
+        entry: "src/index.ts",
+      }),
+      devServer({
+        entry: "src/index.ts",
+      }),
+    ],
   };
 });

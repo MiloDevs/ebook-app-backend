@@ -121,7 +121,9 @@ app.post("/upload", async (c) => {
     // Ensuring the error message is descriptive
     console.error("R2 Upload Error:", error);
     return c.json(
-      { error: `File upload failed due to R2 error: ${error.message}` },
+      {
+        error: `File upload failed due to R2 error: ${error instanceof Error ? error.message : error}`,
+      },
       500,
     );
   }
